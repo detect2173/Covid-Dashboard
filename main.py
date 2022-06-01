@@ -51,7 +51,7 @@ app = dash.Dash(__name__, )
 app.layout = html.Div([
     html.Div([
         html.Div([
-            html.Img(src=app.get_asset_url('corona-logo-1.jpg'),
+            html.Img(src=app.get_asset_url('logo1.jpg'),
                      id = 'corona-image',
                      style={'height': '60px',
                             'width': 'auto',
@@ -60,12 +60,25 @@ app.layout = html.Div([
         ], className='one-third column'),
 
         html.Div([
-            html.H3('Covid - 19'),
-            html.H5('Track Covid - 19 Cases')
-        ], className='one-half column', id='title')
+            html.H2('Covid - 19',style={'margin-bottom': '0px', 'color': 'white'}),
+            html.H5('Track Covid - 19 Cases', style={'margin-bottom': '0px', 'color': 'white'})
+
+        ], className='one-half column', id='title'),
+
+        html.Div([
+            html.H6('Last Updated: ' + str(covid_data['date'].iloc[-1].strftime('%B %d %Y') + ' 00:01 (UTC)'),
+                    style={'color': 'orange'})
+
+        ], className='one-third column', id='title1')
 
 
-    ], id='header', className='row flex-display', style={'margin-bottom': '25px'})
+    ], id='header', className='row flex-display', style={'margin-bottom': '25px'}),
+    html.Div([
+        html.Div([
+
+        ], className='card_container four columns')
+
+    ], className='row flex display')
 
 ], id='mainContainer', style={'display': 'flex', 'flex-direction': 'column'})
 
